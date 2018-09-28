@@ -5,8 +5,14 @@
   <meta charset='utf-8'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" href="podcast.css">
-  <script src='main.js'></script>
+  <script src='podcast.js'></script>
 </head>
+
 <body>
-  
+  <video id="videoPlayer">
+    <source src=SampleVideo_1280x720_1mb.mp4 type=video/mp4>
+</video>
+
+<button class="control" onclick="play('videoPlayer', this)">Play</button>
+<button class="control" onclick="resume('videoPlayer')">Stop</button>
 </body>
