@@ -16,4 +16,22 @@ function resume(idPlayer) {
     player.currentTime = 0;
     player.pause();
 }
+<<<<<<< HEAD
 }
+=======
+
+function addRss(){
+  var requete_ajax = new XMLHttpRequest();
+ 
+  requete_ajax.open('GET', 'https://crossorigin.me/http://radiofrance-podcast.net/podcast09/rss_16877.xml', true);
+  requete_ajax.send(null);
+   
+  var req = requete_ajax.responseXML;
+  var titre = req.getElementsByTagName("titre");
+  var source = req.getElementsByTagName("source");
+   
+  document.getElementById("p_titre").innerHTML = titre[0].firstChild.nodeValue;
+  document.getElementById("p_source").innerHTML = source[0].firstChild.nodeValue;
+}
+//Access-Control-Allow-Origin: *;
+>>>>>>> some adv
