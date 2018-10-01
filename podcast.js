@@ -16,3 +16,4 @@ function resume(idPlayer) {
     player.currentTime = 0;
     player.pause();
 }
+}
