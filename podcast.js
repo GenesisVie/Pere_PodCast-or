@@ -16,9 +16,6 @@ function resume(idPlayer) {
     player.currentTime = 0;
     player.pause();
 }
-<<<<<<< HEAD
-}
-=======
 
 function addRss(){
   var requete_ajax = new XMLHttpRequest();
@@ -34,4 +31,3 @@ function addRss(){
   document.getElementById("p_source").innerHTML = source[0].firstChild.nodeValue;
 }
 //Access-Control-Allow-Origin: *;
->>>>>>> some adv
