@@ -19,15 +19,18 @@ function resume(idPlayer) {
 
 function addRss(){
   var requete_ajax = new XMLHttpRequest();
- 
+
   requete_ajax.open('GET', 'https://crossorigin.me/http://radiofrance-podcast.net/podcast09/rss_16877.xml', true);
-  requete_ajax.send(null);
-   
+  requete_ajax.ContentType = "text/xml";
+  requete_ajax.overrideMimeType('text/xml');
+  requete_ajax.send();
+
   var req = requete_ajax.responseXML;
-  var titre = req.getElementsByTagName("titre");
-  var source = req.getElementsByTagName("source");
+  var titre = req.getElementsByTagName("title")[0];
+  var source = req.getElementsByTagName("source")[0];
+
    
-  document.getElementById("p_titre").innerHTML = titre[0].firstChild.nodeValue;
-  document.getElementById("p_source").innerHTML = source[0].firstChild.nodeValue;
+  document.getElementById("p_titre").innerHTML = titre.childNodes[0].nodeValue;
+  document.getElementById("p_source").innerHTML = source.childNodes[0].nodeValue;
 }
 //Access-Control-Allow-Origin: *;
