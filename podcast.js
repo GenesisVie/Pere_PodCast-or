@@ -31,20 +31,26 @@ function addRss(){
       var source = req.getElementsByTagName("link")[0];
       document.getElementById("p_titre").innerHTML = titre.childNodes[0].nodeValue;
       document.getElementById("p_source").innerHTML = source.childNodes[0].nodeValue;
+      var title = [];
       fetch(url).then((res) => {
         res.text().then((xmlTxt) => {
         var domParser = new DOMParser()
         let doc = domParser.parseFromString(xmlTxt, 'text/xml')
         doc.querySelectorAll('item').forEach((item) => {
-          var link = item.childNodes[28].attributes[0].value;
+          //récupération de l'url du média
+          var enclosure = item.getElementsByTagName("enclosure")[0];
+          var link = enclosure.attributes[0].value;
+          //affichage de la vidéo
           document.getElementById("videoPlayer").innerHTML = "<source src=" + link + "type=video/mp4>";
-          //affiche la dernière vidéo de la liste de vidéo
-          //à faire : afficher la première vidéo
-          //          stocker la liste des vidéos dans le tableau
-          console.log(link);
-       })
-     })
-})
+          //récupération des titres
+          var current_title = item.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+          //ajout des titres dans une liste
+          document.getElementById('queue').innerHTML += '<li>' + current_title + '</li>';
+          console.log(item);
+          })
+        })
+      })
+      console.log(title);
     }
   }
 }

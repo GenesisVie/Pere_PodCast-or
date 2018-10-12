@@ -5,26 +5,26 @@
   <meta charset='utf-8'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" href="podcast.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src='podcast.js'></script>
 </head>
 
+<h1>Lecteur vidéo RSS</h1>
+
 <body>
   <video id="videoPlayer">
-    
+
 </video>
 <br>
 <button class="control" onclick="play('videoPlayer', this)">Play</button>
 <button class="control" onclick="resume('videoPlayer')">Stop</button>
-
 <br>
-<table style="width:100%">
- <tr>
-   <th>Liste de lecture :</th>
- </tr>
- <tr>
-   <td>...</td>
- </tr>
-</table>
+
+<div class="w3-container">
+  <h3>File d'attente</h3>
+  <ul id ="queue" class="w3-ul w3-hoverable"></ul>
+</div>
 <br>
 
 <button onclick = "addRss()" > Ajouter flux RSS </button>

@@ -2,3 +2,8 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+ul {
+    background: #D8D8D8;
+    padding: 20px;
+}
