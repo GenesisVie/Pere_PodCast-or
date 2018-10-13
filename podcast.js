@@ -17,7 +17,31 @@ function resume(idPlayer) {
     player.pause();
 }
 
+var videoCount = 0;
+
+function next(idPlayer) {
+  var items = [];
+  var url = "https://cors-anywhere.herokuapp.com/http://rss.cnn.com/services/podcasting/studentnews/rss.xml";
+  fetch(url).then((res) => {
+    res.text().then((xmlTxt) => {
+    var domParser = new DOMParser()
+    let doc = domParser.parseFromString(xmlTxt, 'text/xml')
+    doc.querySelectorAll('item').forEach((item) => {
+      items.push(item);
+    });
+    });
+  });
+  videoCount ++;
+  console.log(items);
+  var item = items[videoCount];
+  var enclosure = item.getElementsByTagName("enclosure")[0];
+  var link = enclosure.attributes[0].value;
+  document.getElementById("videoPlayer").innerHTML = "";
+  document.getElementById("videoPlayer").innerHTML = "<source src=" + link + "type=video/mp4>";
+}
+
 function addRss(){
+  document.getElementById('queue').innerHTML = "";
   var requete_ajax = new XMLHttpRequest();
   var url = "https://cors-anywhere.herokuapp.com/http://rss.cnn.com/services/podcasting/studentnews/rss.xml";
   requete_ajax.open('GET', url, true);
@@ -31,7 +55,7 @@ function addRss(){
       var source = req.getElementsByTagName("link")[0];
       document.getElementById("p_titre").innerHTML = titre.childNodes[0].nodeValue;
       document.getElementById("p_source").innerHTML = source.childNodes[0].nodeValue;
-      var title = [];
+      var items = [];
       fetch(url).then((res) => {
         res.text().then((xmlTxt) => {
         var domParser = new DOMParser()
@@ -46,11 +70,10 @@ function addRss(){
           var current_title = item.getElementsByTagName("title")[0].childNodes[0].nodeValue;
           //ajout des titres dans une liste
           document.getElementById('queue').innerHTML += '<li>' + current_title + '</li>';
-          console.log(item);
-          })
-        })
-      })
-      console.log(title);
-    }
+          items.push(item);
+        });
+      });
+    });
+  }
   }
 }
