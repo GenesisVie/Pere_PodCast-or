@@ -13,12 +13,13 @@
 <h1>Lecteur vidéo RSS</h1>
 
 <body>
+<h3 id="title"></h3>
 </ul>
-  <video id="videoPlayer" poster="Rss.jpg">
+  <video id="videoPlayer" poster="Rss.jpg" autoplay onended="next('videoPlayer')">
 </video>
 
 <ul id="video-controls" class="controls">
-    <button id="playpause" type="button" onclick="play('videoPlayer', this)"><i class="fas fa-play" id="icon"></i></button>
+    <button id="playpause" type="button" onclick="play('videoPlayer', this)"><i class="fas fa-pause" id="icon"></i></button>
     <button id="stop" type="button" onclick="stoped('videoPlayer')"><i class="fas fa-stop"></i></button>
     <button id="next" class="control" onclick="next('videoPlayer')"><i class="fas fa-forward"></i></button>
    <class="progress">
@@ -29,13 +30,15 @@
     <button id="mute" type="button" onclick="muted('videoPlayer')"><i class="fas fa-volume-up"></i>/<i class="fas fa-volume-mute"></i></button>
 </ul>
 
+<input type="text" id="rsslink" name="rsslink" value="Lien RSS">
+<button onclick = "addRss('videoPlayer')"> Ajouter flux RSS </button>
+
 <div class="w3-container">
   <h3>File d'attente</h3>
   <ul id ="queue" class="w3-ul w3-hoverable"></ul>
 </div>
 <br>
 
-<button onclick = "addRss()"> Ajouter flux RSS </button>
 
 <p><div id="wait"></div></p>
 <p><div id="p_titre"></div></p>
