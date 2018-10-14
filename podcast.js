@@ -86,16 +86,12 @@ function addRss(){
       });
     });
   }
-  }
-
-
-}
-
-var player = document.querySelector('#videoplayer');
+};
+var player = document.querySelector('#videoPlayer');
 var progress = document.querySelector('#progress');
 var progressBar = document.querySelector('#progress-bar');
 
-player.addEventListener('loadstart', function() {
+player.addEventListener('load', function() {
    progress.setAttribute('max', player.duration);
 });
 
@@ -109,3 +105,4 @@ player.addEventListener('timeupdate', function() {
    progress.value = player.currentTime;
    progressBar.style.width = Math.floor((player.currentTime / player.duration) * 100) + '%';
 });
+}
