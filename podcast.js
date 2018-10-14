@@ -1,11 +1,16 @@
 function play(idPlayer, control) {
     var player = document.querySelector('#' + idPlayer);
+    var getBtn = document.getElementById('playpause');
+    var getIcon = document.getElementById('icon');
+
     if (player.paused) {
         player.play();
-        control.className = 'fas fa-pause';
+        getIcon.classList.remove('fa-play');
+        getIcon.classList.add('fa-pause');
     } else {
         player.pause();
-        control.className = "fas fa-play";
+        getIcon.classList.remove('fa-pause');
+        getIcon.classList.add('fa-play');
     }
   }
 
