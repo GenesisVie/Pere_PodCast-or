@@ -1,6 +1,7 @@
 //liens testés : http://rss.cnn.com/services/podcasting/studentnews/rss.xml
 //http://radiofrance-podcast.net/podcast09/rss_17974.xml
 
+//bouton play/pause
 function play(idPlayer, control) {
     var player = document.querySelector('#' + idPlayer);
     var getBtn = document.getElementById('playpause');
@@ -17,6 +18,7 @@ function play(idPlayer, control) {
     }
   }
 
+//bouton stop
 function stoped(idPlayer) {
     var player = document.querySelector('#' + idPlayer);
     var progress = document.querySelector('#progress');
@@ -33,6 +35,7 @@ function stoped(idPlayer) {
 }
 
 var videoCount = 0;
+//bouton next
 //pas très propre à notre avis car demande de refaire une requete
 function next(idPlayer) {
   var player = document.querySelector('#' + idPlayer);
@@ -175,3 +178,10 @@ player.addEventListener('timeupdate', function() {
    progressBar.style.width = Math.floor((player.currentTime / player.duration) * 100) + '%';
 });
 }
+//*****FEATURES MANQUANTE*****//
+/*
+Choix spécifique d'un média dans la liste
+Mise à jour de la liste lorsque média terminé
+Suppression d'un élément de la liste
+Surlignage de l'élément en cours de lecture
+*/
