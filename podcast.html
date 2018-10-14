@@ -20,7 +20,7 @@
 <ul id="video-controls" class="controls">
     <button id="playpause" type="button" onclick="play('videoPlayer', this)"><i class="fas fa-play" id="icon"></i></button>
     <button id="stop" type="button" onclick="stoped('videoPlayer')"><i class="fas fa-stop"></i></button>
-    <button class="control" onclick="next('videoPlayer')"><i class="fas fa-forward"></i></button>
+    <button id="next" class="control" onclick="next('videoPlayer')"><i class="fas fa-forward"></i></button>
    <class="progress">
       <progress id="progress" value="0" min="0">
          <span id="progress-bar"></span>
@@ -37,6 +37,7 @@
 
 <button onclick = "addRss()"> Ajouter flux RSS </button>
 
+<p><div id="wait"></div></p>
 <p><div id="p_titre"></div></p>
 <p><div id="p_source"></div></p>
 

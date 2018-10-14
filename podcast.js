@@ -25,26 +25,16 @@ function stoped(idPlayer) {
 
 var videoCount = 0;
 
-function next(idPlayer) {
-  var items = [];
-  var url = "https://cors-anywhere.herokuapp.com/http://rss.cnn.com/services/podcasting/studentnews/rss.xml";
-  fetch(url).then((res) => {
-    res.text().then((xmlTxt) => {
-    var domParser = new DOMParser()
-    let doc = domParser.parseFromString(xmlTxt, 'text/xml')
-    doc.querySelectorAll('item').forEach((item) => {
-      items.push(item);
-    });
-    });
-  });
+/*function next(idPlayer) {
   videoCount ++;
-  console.log(items);
-  var item = items[videoCount];
+  console.log(list);
+  var item_current = items[videoCount];
+  console.log(item_current);
   var enclosure = item.getElementsByTagName("enclosure")[0];
   var link = enclosure.attributes[0].value;
   document.getElementById("videoPlayer").innerHTML = "";
   document.getElementById("videoPlayer").innerHTML = "<source src=" + link + "type=video/mp4>";
-}
+}*/
 
 function muted(idPlayer) {
     var player = document.querySelector('#' + idPlayer);
@@ -52,7 +42,11 @@ function muted(idPlayer) {
 }
 
 function addRss(){
+  //vide la file d'attente
   document.getElementById('queue').innerHTML = "";
+  //affichage message d'attente
+  document.getElementById('wait').innerHTML = "Please wait...";
+  //requete_ajax
   var requete_ajax = new XMLHttpRequest();
   var url = "https://cors-anywhere.herokuapp.com/http://rss.cnn.com/services/podcasting/studentnews/rss.xml";
   requete_ajax.open('GET', url, true);
@@ -79,6 +73,8 @@ function addRss(){
           document.getElementById("videoPlayer").innerHTML = "<source src=" + link + "type=video/mp4>";
           //récupération des titres
           var current_title = item.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+          //suppression message d'attente
+          document.getElementById('wait').innerHTML = "";
           //ajout des titres dans une liste
           document.getElementById('queue').innerHTML += '<li>' + current_title + '</li>';
           items.push(item);
@@ -105,4 +101,5 @@ player.addEventListener('timeupdate', function() {
    progress.value = player.currentTime;
    progressBar.style.width = Math.floor((player.currentTime / player.duration) * 100) + '%';
 });
+
 }
