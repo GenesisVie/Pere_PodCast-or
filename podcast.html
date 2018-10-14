@@ -3,7 +3,7 @@
 <head>
   <title>Pere_PodCast-or te raconte un podcast</title>
   <meta charset='utf-8'>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <link rel="stylesheet" href="podcast.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,14 +13,21 @@
 <h1>Lecteur vidéo RSS</h1>
 
 <body>
-  <video id="videoPlayer">
-
+</ul>
+  <video id="videoPlayer" poster="Rss.jpg">
 </video>
-<br>
-<button class="control" onclick="play('videoPlayer', this)">Play</button>
-<button class="control" onclick="resume('videoPlayer')">Stop</button>
-<button class="control" onclick="next('videoPlayer')">Next</button>
-<br>
+
+<ul id="video-controls" class="controls">
+    <button id="playpause" type="button" onclick="play('videoPlayer', this)"><i class="fas fa-play"></i></button>
+    <button id="stop" type="button" onclick="stoped('videoPlayer')"><i class="fas fa-stop"></i></button>
+    <button class="control" onclick="next('videoPlayer')"><i class="fas fa-forward"></i></button>
+   <class="progress">
+      <progress id="progress" value="0" min="0">
+         <span id="progress-bar"></span>
+      </progress>
+
+    <button id="mute" type="button" onclick="muted('videoPlayer')"><i class="fas fa-volume-up"></i>/<i class="fas fa-volume-mute"></i></button>
+</ul>
 
 <div class="w3-container">
   <h3>File d'attente</h3>
