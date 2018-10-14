@@ -10,7 +10,7 @@
   <script src='podcast.js'></script>
 </head>
 
-<h1>Lecteur vidéo RSS</h1>
+<h1>Lecteur multimédia RSS</h1>
 
 <body>
 <h3 id="title"></h3>
@@ -33,6 +33,10 @@
 <input type="text" id="rsslink" name="rsslink" value="Lien RSS">
 <button onclick = "addRss('videoPlayer')"> Ajouter flux RSS </button>
 
+<p><div id="wait"></div></p>
+<p><div id="p_titre"></div></p>
+<p><div id="p_source"></div></p>
+
 <div class="w3-container">
   <h3>File d'attente</h3>
   <ul id ="queue" class="w3-ul w3-hoverable"></ul>
@@ -40,8 +44,5 @@
 <br>
 
 
-<p><div id="wait"></div></p>
-<p><div id="p_titre"></div></p>
-<p><div id="p_source"></div></p>
 
 </body>
